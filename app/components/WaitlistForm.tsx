@@ -29,7 +29,7 @@ export default function WaitlistForm({
       });
 
       if (res.ok) {
-        toast.success("Vous êtes sur la liste ! 🎉", {
+        toast.success("Vous êtes sur la liste !", {
           description: "Nous vous contacterons dès que l'accès sera disponible.",
         });
         setEmail("");
