@@ -1,9 +1,9 @@
 import { supabase } from "@/lib/supabase";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: Request) {
+  const resend = new Resend(process.env.RESEND_API_KEY || "re_dummy");
+  
   try {
     const body = await request.json();
     const { email } = body;
@@ -42,7 +42,7 @@ export async function POST(request: Request) {
     // Send confirmation email
     try {
       await resend.emails.send({
-        from: "Arun <onboarding@resend.dev>",
+        from: "Arun <hello@justarun.app>",
         to: email,
         subject: "Bienvenue sur la liste d'attente Arun !",
         html: `
