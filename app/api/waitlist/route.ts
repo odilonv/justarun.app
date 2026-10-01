@@ -30,6 +30,13 @@ export async function POST(request: Request) {
       .insert([{ email }]);
 
     if (error) {
+      if (error.code === '23505') {
+        return Response.json(
+          { error: "Vous êtes déjà inscrit !" },
+          { status: 409 }
+        );
+      }
+
       console.error("[Waitlist] Supabase error:", error);
       return Response.json(
         { error: "Failed to join waitlist" },
