@@ -107,7 +107,7 @@ export default function HeroSection() {
               {/* Decorative Large Mascot in Corner */}
               <div className="absolute top-0 right-0 w-24 h-24 bg-accent/10 rounded-full blur-2xl pointer-events-none" />
               <div className="absolute -top-1 -right-2 rotate-[8deg] drop-shadow-xl hover:rotate-[0deg] transition-all duration-500 hover:scale-105 pointer-events-auto">
-                <ArunMascot size={110} mood={actionState === 'idle' ? 'think' : (actionState === 'accepted' ? 'happy' : 'sad')} className="transition-all duration-500" />
+                <ArunMascot size={110} mood={actionState === 'idle' ? 'think' : (actionState === 'accepted' ? 'happy' : 'default')} className="transition-all duration-500" />
               </div>
 
               <div className="relative z-20 w-[65%] mt-2">

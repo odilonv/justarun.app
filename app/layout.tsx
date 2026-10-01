@@ -12,10 +12,15 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Arun - Le premier copilote IA pour coureurs",
+  title: "Arun | Coach Running IA & Plan d'Entraînement Dynamique",
   description:
-    "Arun connecte votre Google Calendar à vos données Garmin pour adapter votre entraînement à votre vraie vie, en temps réel. Rejoignez la liste d'attente.",
+    "Découvrez Arun, la 1ère application de course à pied avec IA qui synchronise votre agenda et vos données santé (VFC, sommeil) pour un plan 100% sur-mesure.",
   keywords: [
+    "application course à pied",
+    "plan entraînement marathon",
+    "coach running IA",
+    "synchronisation Garmin",
+    "agenda",
     "running",
     "AI coach",
     "marathon",
@@ -25,18 +30,18 @@ export const metadata: Metadata = {
     "training plan",
   ],
   openGraph: {
-    title: "Arun - Le premier copilote IA pour coureurs",
+    title: "Arun | Coach Running IA & Plan d'Entraînement Dynamique",
     description:
-      "Ne choisissez plus entre votre agenda et votre chrono. Arun synchronise votre vie et votre entraînement.",
+      "Ne choisissez plus entre votre agenda et votre chrono. Arun synchronise votre vie et votre entraînement avec une IA.",
     url: "https://justarun.app",
-    siteName: "Arun",
+    siteName: "Arun | Coach Running IA",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arun - Le premier copilote IA pour coureurs",
+    title: "Arun | Coach Running IA & Plan d'Entraînement Dynamique",
     description:
-      "Ne choisissez plus entre votre agenda et votre chrono. Arun synchronise votre vie et votre entraînement.",
+      "Ne choisissez plus entre votre agenda et votre chrono. Arun synchronise votre vie et votre entraînement avec une IA.",
   },
 };
 
