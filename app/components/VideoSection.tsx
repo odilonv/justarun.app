@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { Volume2, VolumeX, Play, Pause, RotateCcw } from "lucide-react";
+import { Volume2, VolumeX, Play, Pause, RotateCcw, Maximize, Minimize } from "lucide-react";
 
 export default function VideoSection() {
   const containerRef = useRef<HTMLElement>(null);
@@ -10,7 +10,34 @@ export default function VideoSection() {
   const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(true);
   const [volume, setVolume] = useState(1);
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const isVideoInView = useInView(videoRef, { margin: "-100px" });
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    return () => document.removeEventListener("fullscreenchange", handleFullscreenChange);
+  }, []);
+
+  const toggleFullscreen = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const videoContainer = videoRef.current?.parentElement;
+    if (!videoContainer || !videoRef.current) return;
+
+    if (!document.fullscreenElement) {
+      if (videoContainer.requestFullscreen) {
+        videoContainer.requestFullscreen().catch(() => {});
+      } else if ((videoRef.current as any).webkitEnterFullscreen) {
+        (videoRef.current as any).webkitEnterFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen().catch(() => {});
+      }
+    }
+  };
 
   useEffect(() => {
     if (videoRef.current) {
@@ -162,7 +189,7 @@ export default function VideoSection() {
           className="relative z-10 rounded-[2rem] sm:rounded-[3rem] bg-surface-dark border border-black/[0.05] aspect-video w-full overflow-hidden flex items-center justify-center apple-shadow"
         >
           {/* Video Content */}
-          <div className="relative z-10 w-full h-full flex items-center justify-center bg-transparent group">
+          <div className={`relative z-10 w-full h-full flex items-center justify-center group ${isFullscreen ? "bg-black" : "bg-transparent"}`}>
             <video
               ref={videoRef}
               autoPlay
@@ -170,7 +197,7 @@ export default function VideoSection() {
               muted
               playsInline
               onClick={togglePlay}
-              className="absolute inset-0 w-full h-full object-cover scale-[1.05]"
+              className={`absolute inset-0 w-full h-full ${isFullscreen ? "object-contain" : "object-cover scale-[1.05]"}`}
             >
               <source src="/arun-launch-video.mp4" type="video/mp4" />
             </video>
@@ -189,7 +216,7 @@ export default function VideoSection() {
             )}
 
             {/* Custom Controls Overlay */}
-            <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+            <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 flex items-center gap-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 z-20">
               <button
                 onClick={restartVideo}
                 className="cursor-pointer w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md flex items-center justify-center text-white transition-all duration-300 border border-white/10"
@@ -248,6 +275,21 @@ export default function VideoSection() {
                   />
                 </div>
               </div>
+            </div>
+
+            {/* Fullscreen Button Overlay (Hidden on PC) */}
+            <div className="absolute bottom-4 sm:bottom-6 right-4 sm:right-6 lg:hidden flex items-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 z-20">
+              <button
+                onClick={toggleFullscreen}
+                className="cursor-pointer w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md flex items-center justify-center text-white transition-all duration-300 border border-white/10"
+                title={isFullscreen ? "Quitter le plein écran" : "Plein écran"}
+              >
+                {isFullscreen ? (
+                  <Minimize className="w-4 h-4 sm:w-5 sm:h-5" />
+                ) : (
+                  <Maximize className="w-4 h-4 sm:w-5 sm:h-5" />
+                )}
+              </button>
             </div>
           </div>
         </motion.div>
