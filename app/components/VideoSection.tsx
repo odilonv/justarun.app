@@ -1,9 +1,62 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { Play } from "lucide-react";
+"use client";
+
+import { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { Volume2, VolumeX, Play, Pause, RotateCcw } from "lucide-react";
 
 export default function VideoSection() {
   const containerRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMuted, setIsMuted] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [volume, setVolume] = useState(1);
+  const isVideoInView = useInView(videoRef, { margin: "-100px" });
+
+  useEffect(() => {
+    if (videoRef.current) {
+      if (isVideoInView && isPlaying) {
+        videoRef.current.play().catch(() => {});
+      } else {
+        videoRef.current.pause();
+      }
+    }
+  }, [isVideoInView, isPlaying]);
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (videoRef.current) {
+      const newMuted = !isMuted;
+      videoRef.current.muted = newMuted;
+      setIsMuted(newMuted);
+      if (!newMuted && volume === 0) {
+        setVolume(1);
+        videoRef.current.volume = 1;
+      }
+    }
+  };
+
+  const togglePlay = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const restartVideo = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+      if (!isPlaying) {
+        videoRef.current.play().catch(() => {});
+        setIsPlaying(true);
+      }
+    }
+  };
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "center center"]
@@ -106,21 +159,95 @@ export default function VideoSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="relative z-10 rounded-[2rem] sm:rounded-[3rem] bg-surface-dark border border-black/[0.05] aspect-video w-full overflow-hidden flex items-center justify-center group cursor-pointer apple-shadow"
+          className="relative z-10 rounded-[2rem] sm:rounded-[3rem] bg-surface-dark border border-black/[0.05] aspect-video w-full overflow-hidden flex items-center justify-center apple-shadow"
         >
           {/* Video Content */}
-          <div className="relative z-10 w-full h-full flex items-center justify-center">
-            {/* Subtle gradient background */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-accent/5 via-transparent to-blue-500/5 opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
-            
-            <div className="absolute inset-0 flex items-center justify-center">
-               <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center apple-shadow transform transition-transform duration-500 group-hover:scale-110">
-                  <Play className="w-8 h-8 sm:w-10 sm:h-10 text-foreground ml-1 sm:ml-2" />
-               </div>
-            </div>
+          <div className="relative z-10 w-full h-full flex items-center justify-center bg-transparent group">
+            <video
+              ref={videoRef}
+              autoPlay
+              loop
+              muted
+              playsInline
+              onClick={togglePlay}
+              className="absolute inset-0 w-full h-full object-cover scale-[1.05]"
+            >
+              <source src="/arun-launch-video.mp4" type="video/mp4" />
+            </video>
 
-            <div className="absolute bottom-6 left-8 right-8 flex justify-between items-end opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              <span className="text-white/80 font-medium text-[14px]">Découvrir Arun (2:14)</span>
+            {/* Unmute Prompt Badge */}
+            {isMuted && (
+              <div 
+                className="absolute top-4 sm:top-6 right-4 sm:right-6 z-20 cursor-pointer group/badge"
+                onClick={toggleMute}
+              >
+                <div className="flex items-center gap-2 bg-black/70 hover:bg-black/90 backdrop-blur-md border border-white/10 text-white text-sm font-medium px-4 py-2 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.3)] transition-all animate-pulse group-hover/badge:animate-none group-hover/badge:scale-105">
+                  <VolumeX className="w-4 h-4" />
+                  Activer le son
+                </div>
+              </div>
+            )}
+
+            {/* Custom Controls Overlay */}
+            <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+              <button
+                onClick={restartVideo}
+                className="cursor-pointer w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md flex items-center justify-center text-white transition-all duration-300 border border-white/10"
+                title="Recommencer"
+              >
+                <RotateCcw className="w-4 h-4 sm:w-5 sm:h-5" />
+              </button>
+              <button
+                onClick={togglePlay}
+                className="cursor-pointer w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md flex items-center justify-center text-white transition-all duration-300 border border-white/10"
+              >
+                {isPlaying ? (
+                  <Pause className="w-5 h-5 sm:w-6 sm:h-6" />
+                ) : (
+                  <Play className="w-5 h-5 sm:w-6 sm:h-6 ml-0.5" />
+                )}
+              </button>
+              <div className="group/volume flex items-center bg-black/40 hover:bg-black/60 backdrop-blur-md rounded-full text-white transition-all duration-300 border border-white/10 overflow-hidden">
+                <button
+                  onClick={toggleMute}
+                  className="cursor-pointer w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center shrink-0"
+                  title={isMuted ? "Activer le son" : "Désactiver le son"}
+                >
+                  {isMuted || volume === 0 ? (
+                    <VolumeX className="w-5 h-5 sm:w-6 sm:h-6" />
+                  ) : (
+                    <Volume2 className="w-5 h-5 sm:w-6 sm:h-6" />
+                  )}
+                </button>
+                <div className="w-0 group-hover/volume:w-24 sm:group-hover/volume:w-28 overflow-hidden transition-all duration-300 ease-out flex items-center">
+                  <input
+                    type="range"
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    value={isMuted ? 0 : volume}
+                    onClick={(e) => e.stopPropagation()}
+                    onChange={(e) => {
+                      const newVolume = parseFloat(e.target.value);
+                      setVolume(newVolume);
+                      if (videoRef.current) {
+                        videoRef.current.volume = newVolume;
+                        if (newVolume === 0) {
+                          videoRef.current.muted = true;
+                          setIsMuted(true);
+                        } else {
+                          videoRef.current.muted = false;
+                          setIsMuted(false);
+                        }
+                      }
+                    }}
+                    style={{
+                      background: `linear-gradient(to right, white ${(isMuted ? 0 : volume) * 100}%, rgba(255,255,255,0.3) ${(isMuted ? 0 : volume) * 100}%)`
+                    }}
+                    className="w-20 sm:w-24 h-1.5 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:rounded-full mr-3 sm:mr-4"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
