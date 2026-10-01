@@ -27,11 +27,28 @@ export default function HeroSection() {
   const phoneGlowOpacity = useTransform(scrollYProgress, [0.2, 0.45], [1, 0]);
 
   return (
-    <section ref={containerRef} className="relative pt-[140px] pb-8 min-h-[115vh]">
+    <section ref={containerRef} className="relative pt-[140px] pb-8 min-h-[115vh] mobile-section">
+      <style>{`
+        @media (max-width: 768px) {
+          .mobile-section {
+            min-height: auto !important;
+          }
+          .mobile-no-sticky {
+            position: relative !important;
+            top: 0 !important;
+            transform: none !important;
+            opacity: 1 !important;
+          }
+          .mobile-no-transform {
+            transform: none !important;
+            margin-top: 3rem !important;
+          }
+        }
+      `}</style>
       {/* Sticky hero text */}
       <motion.div
         style={{ opacity: textOpacity, y: textY }}
-        className="sticky top-[140px] z-10 max-w-4xl mx-auto px-6 sm:px-8 text-center flex flex-col items-center"
+        className="sticky top-[140px] z-10 max-w-4xl mx-auto px-6 sm:px-8 text-center flex flex-col items-center mobile-no-sticky"
       >
         {/* Mascot waving - the personality */}
         <motion.div
@@ -92,7 +109,7 @@ export default function HeroSection() {
       {/* Phone mockup - scales up on scroll */}
       <motion.div
         style={{ scale: phoneScale, y: phoneY }}
-        className="relative z-20 mt-24 w-full max-w-[320px] mx-auto flex justify-center origin-top"
+        className="relative z-20 mt-24 w-full max-w-[320px] mx-auto flex justify-center origin-top mobile-no-transform"
       >
         {/* Glowing contour around the phone (pure soft lueur, no ball, fades on scroll) */}
         <motion.div 
