@@ -59,7 +59,7 @@ export default function WaitlistForm({
           onChange={(e) => setEmail(e.target.value)}
           placeholder="votre@email.com"
           required
-          className={`w-full h-12 px-4 rounded-xl text-sm transition-all duration-200 ${
+          className={`w-full h-12 px-4 rounded-xl text-[16px] sm:text-sm transition-all duration-200 ${
             isDark
               ? "bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:border-accent focus:ring-2 focus:ring-accent/30"
               : "bg-white border border-border text-foreground placeholder:text-muted-light focus:border-accent focus:ring-2 focus:ring-accent/20 shadow-sm"
