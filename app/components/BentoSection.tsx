@@ -26,7 +26,7 @@ export default function BentoSection() {
             transition={{ duration: 0.6 }}
             className="md:col-span-2 bg-white rounded-[2.5rem] p-8 sm:p-12 border border-black/[0.03] apple-shadow relative overflow-hidden flex flex-col justify-between min-h-[360px]"
           >
-            <div className="relative z-10 max-w-md">
+            <div className="relative z-10 max-w-md mb-32 md:mb-0">
               <div className="flex items-center gap-2 mb-4">
                 <CalendarDays className="w-5 h-5 text-blue-500" />
                 <span className="text-[12px] font-bold tracking-widest uppercase text-blue-500">Agenda dynamique</span>
@@ -40,7 +40,7 @@ export default function BentoSection() {
             </div>
             
             {/* Visual element */}
-            <div className="absolute right-0 bottom-0 md:-bottom-10 md:-right-10 w-full max-w-[300px] opacity-40 md:opacity-100 pointer-events-none">
+            <div className="absolute right-0 bottom-0 md:-bottom-10 md:-right-10 w-full max-w-[300px] md:opacity-100 pointer-events-none">
               <div className="bg-surface-dark/80 backdrop-blur-md p-4 rounded-tl-3xl border-t border-l border-black/5 shadow-2xl">
                  <div className="space-y-3">
                    <div className="h-10 bg-blue-100 rounded-lg flex items-center px-4"><span className="text-[11px] font-semibold text-blue-800">14:00 - Board Meeting</span></div>
