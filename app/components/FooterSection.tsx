@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import WaitlistForm from "./WaitlistForm";
 import ArunMascot from "./ArunMascot";
 
@@ -19,13 +20,14 @@ export default function FooterSection() {
           <ArunMascot size={64} mood="run" className="mb-8" />
 
           <h2 className="text-[36px] sm:text-[52px] md:text-[60px] font-semibold tracking-[-0.04em] leading-[1.05]">
-            Limité aux 500 <br className="sm:hidden" />
-            premiers coureurs.
+            Premiers inscrits, <br className="sm:hidden" />
+            premiers servis.
           </h2>
 
           <p className="mt-6 text-[17px] sm:text-[20px] text-white/60 leading-[1.55] max-w-lg mx-auto font-medium">
-            Le futur de l&apos;entraînement est autonome. Sécurisez votre place
-            dans la bêta fermée.
+            Ouverture par vagues : un pilote accompagné de 30 coureurs cet hiver,
+            puis l&apos;app iPhone au printemps 2027. Les inscrits passent en premier
+            et gardent le tarif fondateur.
           </p>
 
           <div className="mt-10 sm:mt-12 flex justify-center w-full">
@@ -33,7 +35,7 @@ export default function FooterSection() {
           </div>
 
           <p className="mt-4 text-[13px] text-white/40 font-medium">
-            Gratuit pendant la bêta · Annulation à tout moment
+            Inscription gratuite · Sans engagement · Désinscription en un clic
           </p>
         </motion.div>
       </div>
@@ -53,24 +55,24 @@ export default function FooterSection() {
           </div>
 
           <div className="flex items-center gap-8">
-            <a
-              href="#"
+            <Link
+              href="/mentions-legales"
               className="text-[13px] font-medium text-white/40 hover:text-white/80 transition-colors"
             >
-              Mentions Légales
-            </a>
-            <a
-              href="#"
+              Mentions légales
+            </Link>
+            <Link
+              href="/confidentialite"
               className="text-[13px] font-medium text-white/40 hover:text-white/80 transition-colors"
             >
               Confidentialité
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              href="/contact"
               className="text-[13px] font-medium text-white/60 hover:text-white transition-colors"
             >
               Contact
-            </a>
+            </Link>
           </div>
         </div>
       </div>

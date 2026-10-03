@@ -6,9 +6,18 @@ export async function POST(request: Request) {
   
   try {
     const body = await request.json();
-    const { email } = body;
+    const { website } = body;
 
-    if (!email || typeof email !== "string") {
+    // Honeypot : champ invisible pour les humains, rempli par les robots.
+    // On répond « succès » sans rien enregistrer ni envoyer.
+    if (typeof website === "string" && website.trim() !== "") {
+      return Response.json({ success: true }, { status: 200 });
+    }
+
+    const email =
+      typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
+
+    if (!email || email.length > 254) {
       return Response.json(
         { error: "Email is required" },
         { status: 400 }
@@ -31,9 +40,11 @@ export async function POST(request: Request) {
 
     if (error) {
       if (error.code === '23505') {
+        // Même réponse qu'une nouvelle inscription : on ne révèle pas
+        // si une adresse est déjà dans la liste, et on ne renvoie pas d'email.
         return Response.json(
-          { error: "Vous êtes déjà inscrit !" },
-          { status: 409 }
+          { success: true, message: "Successfully joined the waitlist" },
+          { status: 200 }
         );
       }
 
@@ -51,14 +62,22 @@ export async function POST(request: Request) {
       await resend.emails.send({
         from: "Arun <hello@justarun.app>",
         to: email,
-        subject: "Bienvenue sur la liste d'attente Arun !",
+        replyTo: "hello@justarun.app",
+        subject: "Bienvenue sur la liste d'attente Arun (3 questions rapides)",
         html: `
           <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #111;">
             <h2>Merci pour votre inscription !</h2>
-            <p>Nous avons bien réservé votre place pour l'accès anticipé à <strong>Arun</strong>.</p>
-            <p>Nous vous préviendrons dès que votre accès sera prêt.</p>
+            <p>Votre place pour l'accès anticipé à <strong>Arun</strong> est réservée, avec le tarif fondateur.</p>
+            <p>Pour construire un coach qui colle vraiment à votre vie, pouvez-vous <strong>répondre à cet email</strong> en 30 secondes ?</p>
+            <ol>
+              <li>Quelle montre ou bague portez-vous (Apple Watch, Garmin, Oura, autre) ?</li>
+              <li>Quel est votre prochain objectif (course et date) ?</li>
+              <li>Le mois dernier, combien de séances avez-vous sautées ou déplacées à cause du travail ou de la famille ?</li>
+            </ol>
+            <p>Chaque réponse est lue personnellement. Si vous êtes partant pour un échange de 20 minutes, dites-le-nous.</p>
             <br />
-            <p>L'équipe Arun</p>
+            <p>Odilon, fondateur d'Arun</p>
+            <p style="font-size:12px;color:#888">Vous recevez cet email car vous vous êtes inscrit sur justarun.app. Pour vous désinscrire, répondez simplement « stop ».</p>
           </div>
         `,
       });

@@ -6,6 +6,7 @@ import VideoSection from "./components/VideoSection";
 import ProblemSection from "./components/ProblemSection";
 import BentoSection from "./components/BentoSection";
 import PersonaSection from "./components/PersonaSection";
+import FaqSection from "./components/FaqSection";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <ProblemSection />
       <BentoSection />
       <PersonaSection />
+      <FaqSection />
     </main>
   );
 }

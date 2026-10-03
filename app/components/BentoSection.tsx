@@ -10,10 +10,10 @@ export default function BentoSection() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-20">
           <h2 className="text-[32px] sm:text-[48px] font-semibold tracking-tight text-foreground mb-4">
-            Un entraînement autonome.
+            Un plan qui s&apos;adapte. Vous gardez la main.
           </h2>
           <p className="text-[18px] sm:text-[20px] text-muted max-w-2xl mx-auto font-medium">
-            Arun croise vos données de santé et votre agenda en temps réel pour générer le plan parfait, chaque jour.
+            Arun croise vos créneaux libres et votre récupération pour vous proposer la bonne séance, au bon moment.
           </p>
         </div>
 
@@ -35,7 +35,7 @@ export default function BentoSection() {
                 Votre emploi du temps dicte le plan, pas l&apos;inverse.
               </h3>
               <p className="text-[16px] text-muted font-medium">
-                Une réunion qui s&apos;éternise ? Un vol décalé ? Arun réorganise instantanément votre semaine pour caler vos séances là où vous avez vraiment le temps.
+                Une réunion posée sur votre fractionné ? Un déplacement imprévu ? Arun vous propose aussitôt un nouveau créneau, sans sacrifier vos séances clés. Il ne lit que vos plages occupées, jamais le contenu de vos réunions.
               </p>
             </div>
             
@@ -43,8 +43,8 @@ export default function BentoSection() {
             <div className="absolute right-0 bottom-0 md:-bottom-10 md:-right-10 w-full max-w-[300px] md:opacity-100 pointer-events-none">
               <div className="bg-surface-dark/80 backdrop-blur-md p-4 rounded-tl-3xl border-t border-l border-black/5 shadow-2xl">
                  <div className="space-y-3">
-                   <div className="h-10 bg-blue-100 rounded-lg flex items-center px-4"><span className="text-[11px] font-semibold text-blue-800">14:00 - Board Meeting</span></div>
-                   <div className="h-12 bg-accent/20 rounded-lg flex items-center px-4 border border-accent/30"><span className="text-[12px] font-semibold text-accent">17:30 - Run 45min (Reprogrammé)</span></div>
+                   <div className="h-10 bg-blue-100 rounded-lg flex items-center px-4"><span className="text-[11px] font-semibold text-blue-800">14:00 – 18:00 · Occupé</span></div>
+                   <div className="h-12 bg-accent/20 rounded-lg flex items-center px-4 border border-accent/30"><span className="text-[12px] font-semibold text-accent">18:30 · Footing 45 min (proposé)</span></div>
                  </div>
               </div>
             </div>
@@ -64,10 +64,10 @@ export default function BentoSection() {
                 <span className="text-[12px] font-bold tracking-widest uppercase text-accent">Garde-fou</span>
               </div>
               <h3 className="text-[24px] font-semibold text-foreground leading-[1.1] mb-3">
-                Protection anti-blessure.
+                Garde-fou récupération.
               </h3>
               <p className="text-[15px] text-muted font-medium mb-8">
-                Si votre VFC est trop basse, les séances intenses sont annulées.
+                Quand votre VFC décroche de votre normale plusieurs jours de suite, Arun vous propose d&apos;alléger la séance intense.
               </p>
             </div>
             <div className="mt-auto h-24 flex items-end justify-between gap-1 opacity-80">
@@ -89,10 +89,10 @@ export default function BentoSection() {
               <ArunMascot size={48} mood="think" />
             </div>
             <h3 className="text-[20px] font-semibold text-foreground mb-2">
-              L&apos;agent superviseur.
+              Rien ne bouge sans vous.
             </h3>
             <p className="text-[14px] text-muted font-medium">
-              Analyse en permanence 50+ variables pour ajuster la charge globale.
+              Chaque changement est expliqué et se valide en un tap. Le mode automatique, c&apos;est vous qui l&apos;activez.
             </p>
           </motion.div>
 
@@ -110,10 +110,10 @@ export default function BentoSection() {
                 <span className="text-[12px] font-bold tracking-widest uppercase text-white/60">Performance</span>
               </div>
               <h3 className="text-[28px] sm:text-[32px] font-semibold leading-[1.1] mb-4">
-                Conçu pour les RP.
+                Conçu pour progresser.
               </h3>
               <p className="text-[16px] text-white/60 font-medium">
-                S&apos;adapter ne veut pas dire stagner. Arun garantit une surcharge progressive optimale tout en évitant le surentraînement. Préparez votre prochain marathon avec la certitude d&apos;arriver frais.
+                S&apos;adapter ne veut pas dire stagner. Quand la semaine se complique, Arun protège d&apos;abord votre sortie longue et votre séance de qualité, et fait monter la charge progressivement pour que vous arriviez frais au départ.
               </p>
             </div>
             

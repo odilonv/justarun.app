@@ -14,6 +14,7 @@ export default function WaitlistForm({
   id,
 }: WaitlistFormProps) {
   const [email, setEmail] = useState("");
+  const [website, setWebsite] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: FormEvent) => {
@@ -25,7 +26,7 @@ export default function WaitlistForm({
       const res = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, website }),
       });
 
       if (res.ok) {
@@ -52,6 +53,17 @@ export default function WaitlistForm({
       onSubmit={handleSubmit}
       className="flex flex-col sm:flex-row gap-3 w-full max-w-md"
     >
+      {/* Honeypot anti-robots : invisible et ignoré par les humains */}
+      <input
+        type="text"
+        name="website"
+        value={website}
+        onChange={(e) => setWebsite(e.target.value)}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="absolute -left-[9999px] w-px h-px opacity-0"
+      />
       <div className="relative flex-1">
         <input
           type="email"

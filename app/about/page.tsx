@@ -14,8 +14,8 @@ export default function AboutPage() {
         >
           <div className="text-center mb-24">
             <h1 className="text-[40px] sm:text-[60px] md:text-[72px] font-semibold tracking-[-0.03em] text-foreground mb-6 leading-[1.05]">
-              Le copilote autonome <br className="hidden sm:block" />
-              <span className="text-muted-light">des coureurs exigeants.</span>
+              Le coach qui connaît <br className="hidden sm:block" />
+              <span className="text-muted-light">votre agenda.</span>
             </h1>
             <p className="text-[18px] sm:text-[21px] text-muted max-w-2xl mx-auto font-medium tracking-tight">
               Arun est construit pour répondre au dilemme de l&apos;athlète d&apos;endurance moderne : le manque de temps et l&apos;imprévisibilité de la vie.
@@ -33,22 +33,20 @@ export default function AboutPage() {
 
         <h2 className="text-[24px] font-semibold text-foreground mt-12 mb-4 tracking-tight">La solution : Arun</h2>
         <p>
-          Arun ne se contente pas de vous donner un plan d&apos;entraînement. C&apos;est le premier <strong>copilote autonome</strong>. Il se place exactement à l&apos;intersection de votre vie professionnelle (Google/Outlook Calendar), de vos données de récupération physiologique (Garmin/Apple Health) et de vos ambitions sportives.
+          Arun ne se contente pas de vous donner un plan d&apos;entraînement : il s&apos;occupe de sa <strong>logistique</strong>. Il se place à l&apos;intersection de vos créneaux libres (Google Agenda), de vos données de récupération (Apple Health, puis Oura et Garmin) et de votre objectif de course. Quand l&apos;un des trois change, il vous propose un ajustement, que vous validez en un tap.
         </p>
 
-        <h3 className="text-[20px] font-semibold text-foreground mt-10 mb-3 tracking-tight">Une architecture d&apos;agents</h3>
-        <p>
-          Sous le capot, Arun fonctionne avec plusieurs agents qui évaluent en continu votre état :
-        </p>
+        <h3 className="text-[20px] font-semibold text-foreground mt-10 mb-3 tracking-tight">Comment Arun décide</h3>
         <ul className="list-disc pl-6 space-y-2 mt-4 mb-8">
-          <li><strong>L&apos;Agent Physiologiste :</strong> Il évalue constamment vos marqueurs de récupération. Si votre VFC chute ou que votre sommeil est mauvais, il intervient et annule ou adapte les séances intenses.</li>
-          <li><strong>L&apos;Agent Planificateur :</strong> Il scanne votre agenda à la recherche de fenêtres temporelles disponibles correspondant aux besoins d&apos;une séance (ex: une fenêtre de 90 min avant votre présentation de 10h00).</li>
-          <li><strong>L&apos;Agent Superviseur :</strong> Il gère les conflits de manière fluide en croisant votre emploi du temps et votre état de fatigue.</li>
+          <li><strong>Votre forme :</strong> Arun compare la tendance de votre VFC sur 7 jours à votre propre normale, jamais une valeur isolée, et la complète avec votre sommeil, votre fréquence cardiaque de repos et un check-in de 10 secondes.</li>
+          <li><strong>Vos créneaux :</strong> il cherche des fenêtres libres adaptées à chaque séance, avec une marge pour la douche et le trajet (par exemple 75 minutes avant votre rendez-vous de 10h).</li>
+          <li><strong>Vos priorités :</strong> en cas de conflit, la sortie longue et la séance de qualité passent en premier ; les footings servent de variable d&apos;ajustement.</li>
+          <li><strong>Votre accord :</strong> chaque proposition est expliquée. Rien ne change sans votre validation, sauf si vous activez vous-même le mode automatique.</li>
         </ul>
 
         <h2 className="text-[24px] font-semibold text-foreground mt-12 mb-4 tracking-tight">Pour qui est fait Arun ?</h2>
         <p>
-          Arun est conçu pour tous ceux qui ont un quotidien intense : athlètes hybrides, parents débordés, entrepreneurs, ou toute personne dont l&apos;agenda ne rentre pas dans les cases d&apos;un plan d&apos;entraînement classique. 
+          Arun est conçu pour celles et ceux qui préparent un semi ou un marathon avec un quotidien intense : cadres, parents, entrepreneurs, consultants, ou toute personne dont l&apos;agenda ne rentre pas dans les cases d&apos;un plan d&apos;entraînement classique.
         </p>
         <p>
           Si vous voulez préparer un marathon mais que votre plus grande angoisse est de voir votre emploi du temps exploser, Arun est fait pour vous.

@@ -14,7 +14,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Arun | Coach Running IA & Plan d'Entraînement Dynamique",
   description:
-    "Découvrez Arun, la 1ère application de course à pied avec IA qui synchronise votre agenda et vos données santé (VFC, sommeil) pour un plan 100% sur-mesure.",
+    "Arun place chaque séance de votre préparation marathon dans un vrai créneau libre de votre agenda et l'ajuste à votre récupération (VFC, sommeil). Il propose, vous validez en un tap.",
   keywords: [
     "application course à pied",
     "plan entraînement marathon",

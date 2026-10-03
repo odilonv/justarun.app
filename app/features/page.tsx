@@ -1,4 +1,4 @@
-import { Heart, CalendarDays, TrendingUp, Zap, Activity, ArrowRightLeft } from "lucide-react";
+import { Heart, HeartPulse, Watch, CalendarDays, TrendingUp, Zap, Activity, ArrowRightLeft } from "lucide-react";
 import ArunMascot from "../components/ArunMascot";
 
 export default function FeaturesPage() {
@@ -11,7 +11,7 @@ export default function FeaturesPage() {
             <span className="text-muted-light">votre copilote Arun.</span>
           </h1>
           <p className="text-[18px] sm:text-[21px] text-muted max-w-2xl mx-auto font-medium tracking-tight">
-            Découvrez comment notre moteur agentique analyse vos données pour protéger votre corps et libérer votre agenda.
+            Comment Arun lit votre forme et vos créneaux pour vous proposer la bonne séance, au bon moment.
           </p>
         </div>
 
@@ -27,7 +27,7 @@ export default function FeaturesPage() {
                 Garde-fou physiologique.
               </h2>
               <p className="text-[18px] text-muted leading-relaxed">
-                Avant chaque séance, Arun analyse votre <strong>VFC (Variabilité de la Fréquence Cardiaque)</strong> et votre sommeil. Si vous êtes dans le rouge, l&apos;IA rétrograde automatiquement votre séance intense en récupération pour éviter la blessure.
+                Chaque matin, Arun compare la tendance de votre <strong>VFC (variabilité de la fréquence cardiaque)</strong> à votre propre normale, et la complète avec votre sommeil et votre ressenti. Quand le signal reste bas plusieurs jours, il vous propose d&apos;alléger la séance intense et de la décaler. Vous validez.
               </p>
             </div>
             <div className="flex-1 w-full">
@@ -48,7 +48,7 @@ export default function FeaturesPage() {
                 </div>
                 <div className="bg-red-50 text-red-700 p-4 rounded-2xl text-[13px] font-medium flex gap-3 items-start border border-red-100">
                   <ArunMascot size={20} mood="think" className="shrink-0 mt-0.5" />
-                  <p>Alerte : VFC en baisse drastique. La séance VMA de ce soir a été annulée et remplacée par 45 min de vélo léger.</p>
+                  <p>VFC sous ta normale depuis 3 jours. Je te propose 40 min en endurance fondamentale ce soir et la VMA samedi. Accepter ?</p>
                 </div>
               </div>
             </div>
@@ -62,10 +62,10 @@ export default function FeaturesPage() {
                 <span className="text-[11px] font-bold tracking-widest uppercase text-blue-500">Logistique</span>
               </div>
               <h2 className="text-[32px] sm:text-[40px] font-semibold tracking-tight leading-[1.1]">
-                Logistique autonome.
+                Une logistique qui suit votre agenda.
               </h2>
               <p className="text-[18px] text-muted leading-relaxed">
-                Votre agenda bouge, votre plan aussi. Arun scanne les créneaux disponibles dans votre calendrier et trouve la meilleure fenêtre pour caler vos séances sans ruiner vos journées de travail.
+                Votre agenda bouge, votre plan aussi. Arun repère les créneaux libres dans votre calendrier (sans jamais lire le contenu de vos réunions) et vous propose la meilleure fenêtre pour chaque séance.
               </p>
             </div>
             <div className="flex-1 w-full">
@@ -89,7 +89,7 @@ export default function FeaturesPage() {
                     <div className="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center border-2 border-white z-10">
                       <Zap className="w-3 h-3 text-accent" />
                     </div>
-                    <p className="text-[11px] text-accent font-bold uppercase tracking-wider mb-0.5">Reprogrammé par Arun</p>
+                    <p className="text-[11px] text-accent font-bold uppercase tracking-wider mb-0.5">Proposé par Arun · validé</p>
                     <p className="text-[12px] text-muted font-medium">18:00 - 19:30</p>
                     <p className="text-[15px] font-semibold text-foreground">Séance VMA déplacée</p>
                   </div>
@@ -105,24 +105,24 @@ export default function FeaturesPage() {
                 <span className="text-[11px] font-bold tracking-widest uppercase text-green-500">Progression</span>
               </div>
               <h2 className="text-[32px] sm:text-[40px] font-semibold tracking-tight leading-[1.1]">
-                Évolution de la charge d&apos;entraînement.
+                Une charge qui monte progressivement.
               </h2>
               <p className="text-[18px] text-muted leading-relaxed">
-                Le ratio de charge aiguë/chronique est calculé en continu. Arun s&apos;assure que vous progressez (ratio entre 1.0 et 1.4) sans entrer dans la zone de danger (au-delà de 1.5).
+                Arun suit votre charge de la semaine par rapport à celle des semaines précédentes. Quand une semaine dérape (séances ratées, voyage, fatigue), il évite les rattrapages brutaux et reconstruit la progression.
               </p>
             </div>
             <div className="flex-1 w-full">
               <div className="bg-white apple-shadow rounded-[2rem] p-8 border border-black/[0.03]">
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-[14px] font-semibold flex items-center gap-2">
-                    Ratio Aiguë / Chronique
+                    Charge récente / habituelle
                   </h3>
                   <div className="flex items-center gap-3 text-[10px] font-medium text-muted">
                     <div className="flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-green-500" /> Optimal
+                      <span className="w-2 h-2 rounded-full bg-green-500" /> Progression
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-red-500" /> Danger
+                      <span className="w-2 h-2 rounded-full bg-red-500" /> Hausse trop rapide
                     </div>
                   </div>
                 </div>
@@ -155,7 +155,7 @@ export default function FeaturesPage() {
                 Votre écosystème, unifié.
               </h2>
               <p className="text-[18px] text-muted max-w-2xl mx-auto font-medium">
-                Arun ingère des milliers de points de données de vos outils préférés pour prendre des décisions d&apos;entraînement parfaites, en temps réel.
+                Arun se branche sur les outils que vous utilisez déjà. Au lancement : Apple Health et Google Agenda. Ensuite : Oura, Outlook et Garmin.
               </p>
             </div>
 
@@ -171,17 +171,17 @@ export default function FeaturesPage() {
                   {/* Left: Health & Context Inputs */}
                   <div className="flex flex-col gap-4 w-full md:w-[280px]">
                      <div className="bg-white/80 backdrop-blur-xl p-4 rounded-2xl apple-shadow border border-white flex items-center gap-4 transition-transform hover:-translate-y-1">
-                        <img src="https://cdn.simpleicons.org/garmin/000000" className="w-7 h-7 opacity-80" alt="Garmin" />
+                        <Watch className="w-7 h-7 text-foreground/70" aria-hidden="true" />
                         <div>
                           <div className="text-[13px] font-semibold text-foreground">Garmin</div>
-                          <div className="text-[11px] text-muted">VFC & Sommeil</div>
+                          <div className="text-[11px] text-muted">Via Apple Health · direct bientôt</div>
                         </div>
                      </div>
                      <div className="bg-white/80 backdrop-blur-xl p-4 rounded-2xl apple-shadow border border-white flex items-center gap-4 transition-transform hover:-translate-y-1">
-                        <img src="https://cdn.simpleicons.org/apple/000000" className="w-7 h-7 opacity-80" alt="Apple Health" />
+                        <HeartPulse className="w-7 h-7 text-accent" aria-hidden="true" />
                         <div>
                           <div className="text-[13px] font-semibold text-foreground">Apple Health</div>
-                          <div className="text-[11px] text-muted">Activité quotidienne</div>
+                          <div className="text-[11px] text-muted">VFC, sommeil, séances</div>
                         </div>
                      </div>
                      <div className="bg-white/80 backdrop-blur-xl p-4 rounded-2xl apple-shadow border border-white flex items-center gap-4 transition-transform hover:-translate-y-1">
@@ -190,7 +190,7 @@ export default function FeaturesPage() {
                         </div>
                         <div>
                           <div className="text-[13px] font-semibold text-foreground">Oura Ring</div>
-                          <div className="text-[11px] text-muted">Score de préparation</div>
+                          <div className="text-[11px] text-muted">Bientôt</div>
                         </div>
                      </div>
                   </div>
@@ -211,17 +211,17 @@ export default function FeaturesPage() {
                   {/* Right: Output & Sync */}
                   <div className="flex flex-col gap-4 w-full md:w-[280px]">
                      <div className="bg-white/80 backdrop-blur-xl p-4 rounded-2xl apple-shadow border border-white flex items-center gap-4 transition-transform hover:-translate-y-1">
-                        <img src="https://cdn.simpleicons.org/googlecalendar/4285F4" className="w-7 h-7" alt="Google Calendar" />
+                        <CalendarDays className="w-7 h-7 text-blue-500" aria-hidden="true" />
                         <div>
-                          <div className="text-[13px] font-semibold text-foreground">Google Calendar</div>
-                          <div className="text-[11px] text-muted">Mise à jour en temps réel</div>
+                          <div className="text-[13px] font-semibold text-foreground">Google Agenda</div>
+                          <div className="text-[11px] text-muted">Créneaux libres · calendrier Arun</div>
                         </div>
                      </div>
                      <div className="bg-white/80 backdrop-blur-xl p-4 rounded-2xl apple-shadow border border-white flex items-center gap-4 transition-transform hover:-translate-y-1">
-                        <img src="https://cdn.simpleicons.org/strava/FC4C02" className="w-7 h-7" alt="Strava" />
+                        <Watch className="w-7 h-7 text-foreground/70" aria-hidden="true" />
                         <div>
-                          <div className="text-[13px] font-semibold text-foreground">Strava</div>
-                          <div className="text-[11px] text-muted">Exportation de séances</div>
+                          <div className="text-[13px] font-semibold text-foreground">Apple Watch</div>
+                          <div className="text-[11px] text-muted">Séance envoyée au poignet</div>
                         </div>
                      </div>
                      <div className="bg-white/80 backdrop-blur-xl p-4 rounded-2xl apple-shadow border border-white flex items-center gap-4 transition-transform hover:-translate-y-1">
@@ -237,7 +237,7 @@ export default function FeaturesPage() {
                
                <div className="mt-16 bg-white/60 backdrop-blur-md rounded-2xl p-6 border border-white max-w-2xl text-center">
                  <p className="text-[14px] text-muted-dark font-medium leading-[1.6]">
-                   <strong>Synchronisation bi-directionnelle :</strong> Si vous déplacez un événement dans votre calendrier Google, Arun le détecte instantanément et réorganise votre semaine d&apos;entraînement en conséquence. Pas de saisie manuelle.
+                   <strong>Votre agenda reste à vous :</strong> Arun ne voit que vos plages occupées et écrit vos séances dans un calendrier « Arun » séparé. Quand un événement bouge, il le détecte et vous propose un ajustement. Pas de saisie manuelle.
                  </p>
                </div>
             </div>

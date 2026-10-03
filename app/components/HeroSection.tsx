@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Home, Calendar, MessageCircle, X, SportShoe } from "lucide-react";
+import Link from "next/link";
 import WaitlistForm from "./WaitlistForm";
 import ArunMascot from "./ArunMascot";
 
@@ -81,9 +82,9 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="mt-6 text-[17px] sm:text-[20px] text-muted leading-[1.55] max-w-2xl font-medium tracking-tight"
         >
-          Arun est le premier copilote IA qui synchronise votre Google Calendar,
-          vos données Garmin et votre objectif marathon : pour que chaque séance
-          trouve sa place dans votre vraie vie.
+          Arun place chaque séance de votre prépa marathon dans un vrai créneau
+          libre de votre agenda, et l&apos;ajuste à votre forme du jour. Il
+          propose, vous validez en un tap.
         </motion.p>
 
         <motion.div
@@ -100,10 +101,16 @@ export default function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="mt-3 text-[13px] text-muted-light"
+          className="mt-3 text-[13px] text-muted"
         >
-          Gratuit pendant la bêta · Aucune carte bancaire
+          Bêta gratuite · iPhone · Apple Health &amp; Google Agenda
         </motion.p>
+        <p className="mt-1 text-[12px] text-muted">
+          Votre email sert uniquement à vous informer de la bêta.{" "}
+          <Link href="/confidentialite" className="underline underline-offset-2 hover:text-foreground">
+            Confidentialité
+          </Link>
+        </p>
       </motion.div>
 
       {/* Phone mockup - scales up on scroll */}
@@ -144,7 +151,7 @@ export default function HeroSection() {
                       Arun · il y a 3 min
                     </p>
                     <p className="text-[12px] text-foreground leading-[1.4] mt-1 font-medium">
-                      ⚠️ Manque de sommeil détecté. Ce sera une séance légère aujourd&apos;hui. Etant donné ta nouvelle réunion de 17h, j&apos;ai décalé ton run à 18h30. Ça te convient ?
+                      Nuit courte et VFC sous ta normale. Avec ta nouvelle réunion de 17h, je te propose un footing léger à 18h30 à la place du seuil. Ça te va ?
                     </p>
                     {actionState === 'idle' ? (
                       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-3 flex gap-2">
@@ -152,8 +159,8 @@ export default function HeroSection() {
                         <button onClick={() => setActionState('declined')} className="flex-1 bg-surface text-foreground rounded-lg py-1.5 text-[10px] font-semibold border border-black/[0.05] transition-transform active:scale-95 cursor-pointer hover:bg-black/5">Refuser</button>
                       </motion.div>
                     ) : (
-                      <motion.p initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className={`mt-3 text-[11px] font-semibold ${actionState === 'accepted' ? 'text-green-600' : 'text-red-500'}`}>
-                        {actionState === 'accepted' ? '✅ Plan mis à jour avec succès.' : '❌ Modifications ignorées.'}
+                      <motion.p initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className={`mt-3 text-[11px] font-semibold ${actionState === 'accepted' ? 'text-green-600' : 'text-muted'}`}>
+                        {actionState === 'accepted' ? '✅ C\'est noté, séance mise à jour.' : 'Plan inchangé. Le seuil reste à 18h30.'}
                       </motion.p>
                     )}
                   </div>
